@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Heat Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand"><span class="brand-mark">VH</span>
+    <div><strong>VICE HEAT</strong><span>COVER STUDIO</span></div>
+  </div>
+  <p class="tagline">Turn any photo into Vice City poster art. No upload, no account — everything stays on your machine.</p>
+  <div class="size-tabs" role="group" aria-label="Export size">
+    <button type="button" data-size="square" class="size-tab">1080 × 1080</button>
+    <button type="button" data-size="portrait" class="size-tab active">1080 × 1350</button>
+    <button type="button" data-size="landscape" class="size-tab">1920 × 1080</button>
+  </div>
+</header>
+
+<main id="editor">
+  <aside id="sidebar">
+    <section class="panel" id="photoPanel">
+      <h2><span class="step">1</span> Photos</h2>
+      <label class="upload-btn" for="fileInput">+ Add your photos</label>
+      <input type="file" id="fileInput" accept="image/*" multiple hidden>
+      <div class="thumb-strip" id="photoStrip" aria-label="Photos to use"></div>
+      <div class="row">
+        <button type="button" id="onePhotoBtn" class="mini-btn">One photo everywhere</button>
+        <button type="button" id="shuffleBtn" class="mini-btn">Shuffle photos</button>
+      </div>
+      <p class="hint">Click a panel in the preview, then click a photo here to fill it. Drag inside the selected panel to move its focal point.</p>
+    </section>
+
+    <section class="panel">
+      <h2><span class="step">2</span> Layout</h2>
+      <div class="grid-btns" id="layoutBtns"></div>
+    </section>
+
+    <section class="panel">
+      <h2><span class="step">3</span> Vice grade</h2>
+      <div class="grid-btns" id="gradeBtns"></div>
+    </section>
+
+    <section class="panel">
+      <h2><span class="step">4</span> Caption &amp; cast</h2>
+      <label class="field">Cover title
+        <input type="text" id="titleInput" maxlength="24" value="VICE HEAT">
+      </label>
+      <label class="field">Subtitle
+        <input type="text" id="subtitleInput" maxlength="48" value="A LEONIDA STORY">
+      </label>
+      <div id="roleRows"></div>
+      <label class="field">Review quote
+        <input type="text" id="quoteInput" maxlength="80" value="The best cover maker on the strip.">
+      </label>
+      <label class="field">Stars
+        <select id="starsInput">
+          <option value="5" selected>★★★★★ (5)</option>
+          <option value="4">★★★★ (4)</option>
+          <option value="3">★★★ (3)</option>
+        </select>
+      </label>
+      <label class="field">Billing block
+        <input type="text" id="billingInput" maxlength="120" value="VICE HEAT PICTURES  •  A LEONIDA PRODUCTION  •  STARRING LUCIA &amp; JASON">
+      </label>
+      <label class="check"><input type="checkbox" id="sealInput" checked> Vice Heat seal stamp</label>
+      <label class="check"><input type="checkbox" id="popInput" checked> Hero pop-out (character breaks the frame)</label>
+    </section>
+
+    <section class="panel">
+      <h2><span class="step">5</span> Selected panel</h2>
+      <p class="hint" id="panelInfo">No panel selected — click a panel in the preview.</p>
+      <label class="field">Zoom
+        <input type="range" id="zoomInput" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <div class="row">
+        <button type="button" id="prevPhotoBtn" class="mini-btn">◀ Photo</button>
+        <button type="button" id="nextPhotoBtn" class="mini-btn">Photo ▶</button>
+      </div>
+    </section>
+  </aside>
+
+  <section id="stage">
+    <div id="canvasWrap">
+      <canvas id="preview" width="1080" height="1350"></canvas>
+      <div id="stageHint">Click a panel to select it · drag to move its focal point</div>
+    </div>
+    <div id="exportBar">
+      <button type="button" id="exportBtn" class="export-btn">⬇ Export PNG — <span id="exportSizeLabel">1080 × 1350</span></button>
+      <button type="button" id="exportAllBtn" class="mini-btn">Download all 3 sizes</button>
+      <span id="exportStatus" role="status"></span>
+    </div>
+  </section>
+</main>
+
+<footer id="foot">
+  <p>VICE HEAT COVER STUDIO — an original fan-made poster tool. Not affiliated with Rockstar Games. No logos, artwork or fonts from any game are used here.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
